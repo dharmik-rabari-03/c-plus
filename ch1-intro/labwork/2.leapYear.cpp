@@ -18,10 +18,11 @@ int main() {
         }
     }
 
-    cout << "\nThe array is: ";
+    cout << "\nThe Leap Years is: ";
     for (int i = 0; i < count; i++) {
         cout << leapYears[i] << " ";
     }
 
     return 0;
 }
+
