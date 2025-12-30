@@ -37,6 +37,10 @@ public:
         cout << "Exported Diamonds    :" << comp_export_diamonds << endl;
         cout << "CEO Name             :" << comp_ceo << endl;
     }
+
+    ~DiamondCompany(){
+        cout<<"Destructor Called "<<endl;
+    }
 };
 
 int main()
@@ -46,7 +50,7 @@ int main()
     cout << "\nEnter number of companies: ";
     cin >> n;
 
-    DiamondCompany* Company[n];
+ DiamondCompany *Company[n];
 
     for (int i = 0; i < n; i++)
     {
@@ -81,14 +85,12 @@ int main()
         cout << "Enter CEO Name             :";
         getline(cin, ceo);
 
-        Company[i] = new DiamondCompany(id, name, staff, revenue, import_dia, export_dia, ceo);
+
+        DiamondCompany Company(id, name, staff, revenue, import_dia, export_dia, ceo);
+
+        Company.getdata(i);
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        Company[i]->getdata(i);
-    }
 
     return 0;
 }
-
