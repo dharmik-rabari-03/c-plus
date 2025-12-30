@@ -46,7 +46,7 @@ int main()
     cout << "\nEnter number of companies: ";
     cin >> n;
 
-    DiamondCompany *Company[n];
+    DiamondCompany* Company[n];
 
     for (int i = 0; i < n; i++)
     {
@@ -91,3 +91,4 @@ int main()
 
     return 0;
 }
+
