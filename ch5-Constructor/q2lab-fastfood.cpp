@@ -34,6 +34,10 @@ public:
         cout << "establish year :" << cafe_establish_year << endl;
         cout << "Staff Quantity :" << cafe_staff_quantity << endl;
     }
+
+    ~Cafe(){
+        cout<<"destructor called"<<endl;
+    }
 };
 
 int main()
@@ -44,7 +48,7 @@ int main()
     cin >> n;
     cin.ignore();
 
-    Cafe*  c[n];
+    Cafe *c[n];
 
     for (int i = 0; i < n; i++)
     {
@@ -75,14 +79,12 @@ int main()
         cin >> quantity;
         cin.ignore();
 
-        c[i] = new Cafe(name, type, rating, location, year, quantity);
+
+        Cafe c(name, type, rating, location, year, quantity);
+
+        c.DisplayData(i);
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        c[i]->DisplayData(i);
-    }
-
+ 
     return 0;
 }
-
