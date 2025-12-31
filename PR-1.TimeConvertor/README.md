@@ -54,7 +54,7 @@ Output formatting (cout)
 
 Modular logic
 
-outpu:
+output:
 
 <img width="664" height="343" alt="Screenshot 2025-12-31 161243" src="https://github.com/user-attachments/assets/8e03026a-a54f-4996-9ed1-d1bdc61b7019" />
 
