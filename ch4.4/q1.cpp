@@ -66,7 +66,7 @@ public:
 
     void display() const
     {
-        cout << "Name :" << Name << "Roll no :" << Roll << "Gpa :" << Gpa << endl;
+        cout << " Name : " << Name << " Roll no : " << Roll << " Gpa : " << Gpa << endl;
     }
 
     ~Student()
@@ -94,25 +94,38 @@ public:
 
         if (Students.empty())
         {
-           cout<<"No Record Available"<<endl;
+            cout << "No Record Available" << endl;
         }
-        else{
+        else
+        {
             for (int i = 0; i < Students.size(); i++)
             {
                 Students[i].display();
             }
-            
         }
-        
+    }
+    void SearchByRoll(int roll)
+    {
+        for (int i = 0; i < Students.size(); i++)
+        {
+            if (Students[i].GetRoll() == roll)
+            {
+                cout << "Student Found :" << endl;
+                Students[i].display();
+                return;
+            }
+        }
+
+        cout << "Student with Roll No " << roll << " not found." << endl;
     }
 };
 
 int main()
 {
 
-    Student s1(1,7.7,"Dharmik");
-    Student s2(2,8.7,"Ankit");
-    Student s3(3,9.7,"Prince");
+    Student s1(1, 7.7, "Dharmik");
+    Student s2(2, 8.7, "Ankit");
+    Student s3(3, 9.7, "Prince");
 
     StudentRecordManagement Manager;
 
@@ -121,6 +134,9 @@ int main()
     Manager.AddStudent(s3);
 
     Manager.DisplayAllData();
-    
+
+
+    Manager.SearchByRoll(2);
+
     return 0;
 }
