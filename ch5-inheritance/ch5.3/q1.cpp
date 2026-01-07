@@ -1,7 +1,92 @@
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Employee
+{
+
+protected:
+    int emp_id;
+    string emp_name;
+    int age;
+    double salary;
+
+public:
+    virtual ~Employee() {}
+
+    void setEmployee(int id, string n, int a, double s)
+    {
+
+        emp_id = id;
+        emp_name = n;
+        age = a;
+        salary = s;
+    }
+
+    virtual void display()
+    {
+
+        cout << "\nEmployee Details are" << endl;
+
+        cout << "id" << emp_id << endl;
+        cout << "name" << emp_name << endl;
+        cout << "age" << age << endl;
+        cout << "salary" << salary << endl;
+    }
+};
+
+class FullTimeEmployee : public Employee
+{
+
+protected:
+    double bonus;
+
+public:
+    void setFullTimeEmployee(int id, string n, int a, double s, double b)
+    {
+        setEmployee(id, n, a, s);
+        bonus = b;
+    }
+
+    void display() override
+    {
+
+        cout << "\nFullTime Employee" << endl;
+        Employee::display();
+        cout << "\n bonus" << bonus << endl;
+    }
+};
+
+class PartTime : public Employee
+{
+
+protected:
+    float hours;
+
+public:
+    void setPartTimeEmployee(int id, string n, int a, double s, float h)
+    {
+
+        setEmployee(id, n, a, s);
+
+        hours = h;
+    }
+
+    void display() override
+    {
+
+        cout << "\n Part time employees";
+        Employee::display();
+        cout << "\n hours " << hours << endl;
+    }
+};
+
 int main()
 {
     const int MAX = 10;
-    Employee* emp[MAX];   // array of pointer objects
+    Employee *emp[MAX];
     int count = 0;
     int choice;
 
@@ -33,7 +118,7 @@ int main()
             cout << "Enter Bonus: ";
             cin >> bonus;
 
-            FullTimeEmployee* fte = new FullTimeEmployee();
+            FullTimeEmployee *fte = new FullTimeEmployee();
             fte->setFullTimeEmployee(id, name, age, salary, bonus);
             emp[count++] = fte;
         }
@@ -55,7 +140,7 @@ int main()
             cout << "Enter Hours Worked: ";
             cin >> hours;
 
-            PartTimeEmployee* pte = new PartTimeEmployee();
+            PartTime *pte = new PartTime();
             pte->setPartTimeEmployee(id, name, age, salary, hours);
             emp[count++] = pte;
         }
@@ -63,14 +148,14 @@ int main()
         {
             for (int i = 0; i < count; i++)
             {
-                emp[i]->display(); // polymorphism
+                emp[i]->display();
             }
         }
         else if (choice == 4)
         {
             if (count > 0)
             {
-                delete emp[count - 1]; // free memory
+                delete emp[count - 1];
                 count--;
                 cout << "Employee deleted successfully." << endl;
             }
@@ -82,7 +167,6 @@ int main()
 
     } while (choice != 5);
 
-    // Free all remaining memory
     for (int i = 0; i < count; i++)
     {
         delete emp[i];
