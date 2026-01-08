@@ -1,50 +1,42 @@
-
-
 #include <iostream>
 #include <string>
 using namespace std;
 
 class Employee
 {
-
 protected:
-    int emp_id;
-    string emp_name;
+    int employee_id;
+    string name;
     int age;
     double salary;
 
 public:
-    virtual ~Employee() {}
-
     void setEmployee(int id, string n, int a, double s)
     {
-
-        emp_id = id;
-        emp_name = n;
+        employee_id = id;
+        name = n;
         age = a;
         salary = s;
     }
 
     virtual void display()
     {
-
-        cout << "\nEmployee Details are" << endl;
-
-        cout << "id" << emp_id << endl;
-        cout << "name" << emp_name << endl;
-        cout << "age" << age << endl;
-        cout << "salary" << salary << endl;
+        cout << "Employee ID : " << employee_id << endl;
+        cout << "Name        : " << name << endl;
+        cout << "Age         : " << age << endl;
+        cout << "Salary      : " << salary << endl;
     }
+
+    virtual ~Employee() {}
 };
 
 class FullTimeEmployee : public Employee
 {
-
-protected:
+private:
     double bonus;
 
 public:
-    void setFullTimeEmployee(int id, string n, int a, double s, double b)
+    FullTimeEmployee(int id, string n, int a, double s, double b)
     {
         setEmployee(id, n, a, s);
         bonus = b;
@@ -52,126 +44,129 @@ public:
 
     void display() override
     {
-
-        cout << "\nFullTime Employee" << endl;
         Employee::display();
-        cout << "\n bonus" << bonus << endl;
+        cout << "Bonus       : " << bonus << endl;
     }
 };
 
-class PartTime : public Employee
+class PartTimeEmployee : public Employee
 {
-
-protected:
-    float hours;
+private:
+    float hours_worked;
 
 public:
-    void setPartTimeEmployee(int id, string n, int a, double s, float h)
+    PartTimeEmployee(int id, string n, int a, double s, int h)
     {
-
         setEmployee(id, n, a, s);
-
-        hours = h;
+        hours_worked = h;
     }
 
     void display() override
     {
-
-        cout << "\n Part time employees";
+        cout << "\n part time employees";
         Employee::display();
-        cout << "\n hours " << hours << endl;
+        cout << "Hours Worked: " << hours_worked << endl;
     }
 };
 
 int main()
 {
-    const int MAX = 10;
-    Employee *emp[MAX];
+    const int max = 10;
+    Employee *emp[max];
     int count = 0;
-    int choice;
+    int Choice;
 
     do
     {
-        cout << "\n===== Employee Management System =====" << endl;
-        cout << "1. Add Full Time Employee" << endl;
-        cout << "2. Add Part Time Employee" << endl;
-        cout << "3. Display All Employees" << endl;
-        cout << "4. Delete Last Employee" << endl;
-        cout << "5. Exit" << endl;
-        cout << "Enter your choice: ";
-        cin >> choice;
+        cout << "\n ===== Menu =====\n";
+        cout << "1. Add Full Time Employee \n";
+        cout << "2. Add Part Time Employee \n";
+        cout << "3. Display Employee \n";
+        cout << "4. Delete Employee \n";
+        cout << "5. Exit \n";
+        cout << " Enter Choice: ";
+        cin >> Choice;
 
-        if (choice == 1 && count < MAX)
+        if (Choice == 1)
         {
             int id, age;
             double salary, bonus;
             string name;
 
-            cout << "Enter ID: ";
+            cout << "Enter Id :";
             cin >> id;
-            cout << "Enter Name: ";
+
+            cout << "Enter Name :";
             cin >> name;
-            cout << "Enter Age: ";
+
+            cout << "Enter Age :";
             cin >> age;
-            cout << "Enter Salary: ";
+
+            cout << "Enter Salary :";
             cin >> salary;
-            cout << "Enter Bonus: ";
+
+            cout << "Enter Bonus :";
             cin >> bonus;
 
-            FullTimeEmployee *fte = new FullTimeEmployee();
-            fte->setFullTimeEmployee(id, name, age, salary, bonus);
-            emp[count++] = fte;
+            emp[count++] = new FullTimeEmployee(id, name, age, salary, bonus);
         }
-        else if (choice == 2 && count < MAX)
+        else if (Choice == 2)
         {
             int id, age;
             double salary;
-            float hours;
             string name;
+            float hours;
 
-            cout << "Enter ID: ";
+            cout << "Enter Id :";
             cin >> id;
-            cout << "Enter Name: ";
+
+            cout << "Enter Name :";
             cin >> name;
-            cout << "Enter Age: ";
+
+            cout << "Enter Age :";
             cin >> age;
-            cout << "Enter Salary: ";
+
+            cout << "Enter Salary :";
             cin >> salary;
-            cout << "Enter Hours Worked: ";
+
+            cout << "Enter hours :";
             cin >> hours;
 
-            PartTime *pte = new PartTime();
-            pte->setPartTimeEmployee(id, name, age, salary, hours);
-            emp[count++] = pte;
+            emp[count++] = new PartTimeEmployee(id, name, age, salary, hours);
         }
-        else if (choice == 3)
+        else if (Choice == 3)
         {
             for (int i = 0; i < count; i++)
             {
                 emp[i]->display();
             }
         }
-        else if (choice == 4)
+        else if (Choice == 4)
         {
-            if (count > 0)
+            int index;
+            cout << "Enter index to delete: ";
+            cin >> index;
+
+            delete emp[index];
+            for (int i = index; i < count - 1; i++)
             {
-                delete emp[count - 1];
-                count--;
-                cout << "Employee deleted successfully." << endl;
-            }
-            else
-            {
-                cout << "No employee to delete." << endl;
+                emp[i] = emp[i + 1];
             }
         }
 
-    } while (choice != 5);
+        else if (Choice == 5)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                delete emp[i];
+            }
+            cout << "Memory cleared. Exit.\n";
+        }
+        else
+        {
+            cout << "Invalid Choice\n";
+        }
+    } while (Choice != 5);
 
-    for (int i = 0; i < count; i++)
-    {
-        delete emp[i];
-    }
-
-    cout << "Program exited. Memory freed." << endl;
     return 0;
 }
