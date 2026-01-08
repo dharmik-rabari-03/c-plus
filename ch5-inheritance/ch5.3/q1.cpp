@@ -44,6 +44,8 @@ public:
 
     void display() override
     {
+        cout << "\n full Time Employees" << endl;
+
         Employee::display();
         cout << "Bonus       : " << bonus << endl;
     }
@@ -63,7 +65,7 @@ public:
 
     void display() override
     {
-        cout << "\n part time employees";
+        cout << "\n part time employees" << endl;
         Employee::display();
         cout << "Hours Worked: " << hours_worked << endl;
     }
