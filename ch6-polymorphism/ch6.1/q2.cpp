@@ -5,19 +5,18 @@ class Cricket
 {
 
 public:
-    virtual int getMatchOvers()
+    virtual int getTotalOvers()
     {
-
         return 0;
     }
 };
-class T20 : public Cricket
+
+class T20Match : public Cricket
 {
 
 public:
-    virtual int getMatchOvers() override
+    int getTotalOvers() override
     {
-
         return 20;
     }
 };
@@ -26,27 +25,25 @@ class TestMatch : public Cricket
 {
 
 public:
-    virtual int getMatchOvers() override
+    int getTotalOvers() override
     {
-
         return 90;
     }
 };
 
 int main()
 {
+
     Cricket* obj;
-    T20 t20;
-    TestMatch Test;
 
+    T20Match t20;
+    TestMatch test;
 
-    obj=&t20;
-    cout<<"T20 Match Overs: "<<obj->getMatchOvers()<<endl;
+    obj = &t20;
+    cout << "T20 Match Overs : " << obj->getTotalOvers() << endl;
 
-
-    obj=&Test;
-    cout<<"Test Match Over: "<<obj->getMatchOvers()<<endl;
-
+    obj = &test;
+    cout << "Test Match Overs : " << obj->getTotalOvers() << endl;
 
     return 0;
 }
