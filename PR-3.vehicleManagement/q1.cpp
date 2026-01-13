@@ -2,8 +2,6 @@
 #include <string>
 using namespace std;
 
-
-
 class Vehicle
 {
 protected:
@@ -32,14 +30,12 @@ public:
 
     virtual ~Vehicle() {}
 
- 
     void setVehicleID(int id)
     {
         if (id > 0)
             vehicleID = id;
     }
 
-   
     int getVehicleID()
     {
         return vehicleID;
@@ -57,16 +53,14 @@ public:
 
     virtual void display() const
     {
-        cout << "ID             : " << vehicleID
-             << "Manufacturer   : " << manufacturer
-             << "Model          : " << model
-             << "Year           : " << year;
+        cout << "ID             : " << vehicleID << endl;
+        cout << "Manufacturer   : " << manufacturer << endl;
+        cout << "Model          : " << model << endl;
+        cout << "Year           : " << year << endl;
     }
 };
 
 int Vehicle::totalVehicles = 0;
-
-
 
 class Car : public Vehicle
 {
@@ -82,11 +76,9 @@ public:
     void display() const override
     {
         Vehicle::display();
-        cout << "Fuel Type: " << fuelType;
+        cout << "Fuel Type: " << fuelType<<endl;
     }
 };
-
-
 
 class ElectricCar : public Car
 {
@@ -115,7 +107,7 @@ public:
     void display() const override
     {
         ElectricCar::display();
-        cout << "Top Speed: " << topSpeed << " km/h";
+        cout << "Top Speed: " << topSpeed << " km/h"<<endl;
     }
 };
 
@@ -127,7 +119,7 @@ public:
 
     void display() const override
     {
-        cout << "[Sedan] ";
+        cout << "[Sedan] "<<endl;
         Car::display();
     }
 };
@@ -140,11 +132,10 @@ public:
 
     void display() const override
     {
-        cout << "[SUV] ";
+        cout << "[SUV] "<<endl;
         Car::display();
     }
 };
-
 
 class Aircraft
 {
@@ -166,15 +157,14 @@ public:
 
     void display() const
     {
-        cout << "[FlyingCar] ID: " << vehicleID
-             << ", Manufacturer: " << manufacturer
-             << ", Model: " << model
-             << ", Year: " << year
-             << ", Fuel: " << fuelType
-             << ", Flight Range: " << flightRange << " km";
+        cout << "[FlyingCar] ID: " << vehicleID<<endl;
+          cout   << ", Manufacturer: " << manufacturer<<endl;
+          cout   << ", Model: " << model<<endl;
+          cout   << ", Year: " << year<<endl;
+           cout  << ", Fuel: " << fuelType<<endl;
+           cout  << ", Flight Range: " << flightRange << " km"<<endl;
     }
 };
-
 
 class VehicleRegistry
 {
@@ -192,11 +182,11 @@ public:
         if (count < 50)
         {
             vehicles[count++] = v;
-            cout << "Vehicle added successfully!\n";
+            cout << "Vehicle added successfully!"<<endl;
         }
         else
         {
-            cout << "Registry is full!\n";
+            cout << "Registry is full!"<<endl;
         }
     }
 
@@ -204,7 +194,7 @@ public:
     {
         if (count == 0)
         {
-            cout << "No vehicles found.\n";
+            cout << "No vehicles found."<<endl;
             return;
         }
 
@@ -226,10 +216,9 @@ public:
                 return;
             }
         }
-        cout << "Vehicle not found!\n";
+        cout << "Vehicle not found!"<<endl;
     }
 };
-
 
 int main()
 {
@@ -238,114 +227,113 @@ int main()
 
     do
     {
-        cout << "\n--- Vehicle Registry System ---\n";
-        cout << "1. Add Sedan\n";
-        cout << "2. Add SUV\n";
-        cout << "3. Add Sports Car\n";
-        cout << "4. Add Flying Car\n";
-        cout << "5. View All Vehicles\n";
-        cout << "6. Search by ID\n";
-        cout << "0. Exit\n";
+        cout << "\n===== Vehicle Registry System ====="<<endl;
+        cout << "1. Add Sedan"<<endl;
+        cout << "2. Add SUV"<<endl;
+        cout << "3. Add Sports Car"<<endl;
+        cout << "4. Add Flying Car"<<endl;
+        cout << "5. View All Vehicles"<<endl;
+        cout << "6. Search by ID"<<endl;
+        cout << "0. Exit"<<endl;
         cout << "Enter choice: ";
         cin >> choice;
 
         int id, year, battery, speed, range;
         string manu, model, fuel;
 
-       switch (choice)
-{
-case 1:
-    cout << "\n--- Add Sedan ---\n";
-    cout << "Enter Vehicle ID        : ";
-    cin >> id;
-    cout << "Enter Manufacturer      : ";
-    cin >> manu;
-    cout << "Enter Model             : ";
-    cin >> model;
-    cout << "Enter Year              : ";
-    cin >> year;
-    cout << "Enter Fuel Type         : ";
-    cin >> fuel;
+        switch (choice)
+        {
+        case 1:
+            cout << "\n====== Add Sedan =====\n";
+            cout << "Enter Vehicle ID        : ";
+            cin >> id;
+            cout << "Enter Manufacturer      : ";
+            cin >> manu;
+            cout << "Enter Model             : ";
+            cin >> model;
+            cout << "Enter Year              : ";
+            cin >> year;
+            cout << "Enter Fuel Type         : ";
+            cin >> fuel;
 
-    registry.addVehicle(new Sedan(id, manu, model, year, fuel));
-    break;
+            registry.addVehicle(new Sedan(id, manu, model, year, fuel));
+            break;
 
-case 2:
-    cout << "\n--- Add SUV ---\n";
-    cout << "Enter Vehicle ID        : ";
-    cin >> id;
-    cout << "Enter Manufacturer      : ";
-    cin >> manu;
-    cout << "Enter Model             : ";
-    cin >> model;
-    cout << "Enter Year              : ";
-    cin >> year;
-    cout << "Enter Fuel Type         : ";
-    cin >> fuel;
+        case 2:
+            cout << "\n====== Add SUV =====\n";
+            cout << "Enter Vehicle ID        : ";
+            cin >> id;
+            cout << "Enter Manufacturer      : ";
+            cin >> manu;
+            cout << "Enter Model             : ";
+            cin >> model;
+            cout << "Enter Year              : ";
+            cin >> year;
+            cout << "Enter Fuel Type         : ";
+            cin >> fuel;
 
-    registry.addVehicle(new SUV(id, manu, model, year, fuel));
-    break;
+            registry.addVehicle(new SUV(id, manu, model, year, fuel));
+            break;
 
-case 3:
-    cout << "\n--- Add Sports Car ---\n";
-    cout << "Enter Vehicle ID        : ";
-    cin >> id;
-    cout << "Enter Manufacturer      : ";
-    cin >> manu;
-    cout << "Enter Model             : ";
-    cin >> model;
-    cout << "Enter Year              : ";
-    cin >> year;
-    cout << "Enter Fuel Type         : ";
-    cin >> fuel;
-    cout << "Enter Battery Capacity  : ";
-    cin >> battery;
-    cout << "Enter Top Speed         : ";
-    cin >> speed;
+        case 3:
+            cout << "\n======= Add Sports Car ======\n";
+            cout << "Enter Vehicle ID        : ";
+            cin >> id;
+            cout << "Enter Manufacturer      : ";
+            cin >> manu;
+            cout << "Enter Model             : ";
+            cin >> model;
+            cout << "Enter Year              : ";
+            cin >> year;
+            cout << "Enter Fuel Type         : ";
+            cin >> fuel;
+            cout << "Enter Battery Capacity  : ";
+            cin >> battery;
+            cout << "Enter Top Speed         : ";
+            cin >> speed;
 
-    registry.addVehicle(
-        new SportsCar(id, manu, model, year, fuel, battery, speed));
-    break;
+            registry.addVehicle(
+                new SportsCar(id, manu, model, year, fuel, battery, speed));
+            break;
 
-case 4:
-    cout << "\n--- Add Flying Car ---\n";
-    cout << "Enter Vehicle ID        : ";
-    cin >> id;
-    cout << "Enter Manufacturer      : ";
-    cin >> manu;
-    cout << "Enter Model             : ";
-    cin >> model;
-    cout << "Enter Year              : ";
-    cin >> year;
-    cout << "Enter Fuel Type         : ";
-    cin >> fuel;
-    cout << "Enter Flight Range      : ";
-    cin >> range;
+        case 4:
+            cout << "\n======= Add Flying Car =======\n";
+            cout << "Enter Vehicle ID        : ";
+            cin >> id;
+            cout << "Enter Manufacturer      : ";
+            cin >> manu;
+            cout << "Enter Model             : ";
+            cin >> model;
+            cout << "Enter Year              : ";
+            cin >> year;
+            cout << "Enter Fuel Type         : ";
+            cin >> fuel;
+            cout << "Enter Flight Range      : ";
+            cin >> range;
 
-    registry.addVehicle(
-        (Vehicle *)new FlyingCar(id, manu, model, year, fuel, range));
-    break;
+            registry.addVehicle(
+                (Vehicle *)new FlyingCar(id, manu, model, year, fuel, range));
+            break;
 
-case 5:
-    cout << "\n--- All Registered Vehicles ---\n";
-    registry.displayAll();
-    break;
+        case 5:
+            cout << "\n======= All Registered Vehicles ========\n";
+            registry.displayAll();
+            break;
 
-case 6:
-    cout << "\n--- Search Vehicle ---\n";
-    cout << "Enter Vehicle ID        : ";
-    cin >> id;
-    registry.searchByID(id);
-    break;
+        case 6:
+            cout << "\n======= Search Vehicle ========\n";
+            cout << "Enter Vehicle ID        : ";
+            cin >> id;
+            registry.searchByID(id);
+            break;
 
-case 7:
-    cout << "\nExiting Vehicle Registry System...\n";
-    break;
+        case 7:
+            cout << "\nExiting Vehicle Registry System...\n";
+            break;
 
-default:
-    cout << "\nInvalid choice! Please try again.\n";
-}
-
+        default:
+            cout << "\nInvalid choice! Please try again.\n";
+        }
 
     } while (choice != 7);
 
