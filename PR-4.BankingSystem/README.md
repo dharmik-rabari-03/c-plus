@@ -18,9 +18,9 @@ A **menu-driven Bank Management System** implemented in **C++** using **Object-O
 > Output after successful execution of the program:
 
 <p align="center">
-<img width="500" height="500" alt="Screenshot 2026-01-21 211140" src="https://github.com/user-attachments/assets/28671f04-d2df-41c4-8e0b-e26ba22dec91" />
-<img width="500" height="500" alt="Screenshot 2026-01-21 211116" src="https://github.com/user-attachments/assets/fa65baea-d96a-49be-948d-4580363c0795" />
 <img width="500" height="500" alt="Screenshot 2026-01-21 211050" src="https://github.com/user-attachments/assets/a6188b52-862d-43ca-9b43-b35de8a9e4ad" />
+<img width="500" height="500" alt="Screenshot 2026-01-21 211116" src="https://github.com/user-attachments/assets/fa65baea-d96a-49be-948d-4580363c0795" />
+<img width="500" height="500" alt="Screenshot 2026-01-21 211140" src="https://github.com/user-attachments/assets/28671f04-d2df-41c4-8e0b-e26ba22dec91" />
 
 </p>
 
